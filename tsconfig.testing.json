@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "commonjs",
+    "target": "es2015",
+    "lib": ["es2017"],
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "inlineSourceMap": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "mocha",
+      "chai",
+      "node",
+      "global"
+    ],
+  },
+  "include": [
+    "src/**/*.ts",
+    "specs/**/*.ts"
+  ],
+}

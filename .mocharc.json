@@ -1,0 +1,16 @@
+{
+  "spec": ["specs/**/*.spec.{ts,tsx}"],
+  "require": [
+    "ts-node/register",
+    "chai/register-expect"
+  ],
+  "global": ["expect"],
+  "extension": ["ts", "tsx"],
+  "ui": "bdd",
+  "parallel": true,
+  "jobs": 2,
+  "watch-files": [
+    "src",
+    "specs"
+  ]
+}
