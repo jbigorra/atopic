@@ -8,8 +8,8 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
-    "start": "cross-env NODE_ENV=\\\"dev\\\" snowpack dev",
-    "build": "snowpack build",
+    "start": "cross-env NODE_ENV=\\\"dev\\\" snowpack dev --config snowpack.config.mjs",
+    "build": "snowpack build --config snowpack.prod.config.mjs",
     "test": "cross-env TS_NODE_PROJECT=\\\"tsconfig.testing.json\\\" TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha --check-leaks",
     "test:watch": "cross-env TS_NODE_PROJECT=\\\"tsconfig.testing.json\\\" TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register --check-leaks -w",
     "cy:open": "cypress open"
@@ -22,7 +22,6 @@
     "react-query": "^3.17.0"
   },
   "devDependencies": {
-    "@snowpack/plugin-dotenv": "^2.1.0",
     "@snowpack/plugin-sass": "^1.4.0",
     "@types/chai": "^4.2.18",
     "@types/mocha": "^8.2.2",
