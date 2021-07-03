@@ -8,21 +8,25 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
-    "start": "snowpack dev",
+    "start": "cross-env NODE_ENV=\\\"dev\\\" snowpack dev",
     "build": "snowpack build",
     "test": "cross-env TS_NODE_PROJECT=\\\"tsconfig.testing.json\\\" TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha --check-leaks",
     "test:watch": "cross-env TS_NODE_PROJECT=\\\"tsconfig.testing.json\\\" TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register --check-leaks -w",
-    "cypress:open": "cypress open"
+    "cy:open": "cypress open"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.15.1",
+    "bulma": "^0.9.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.17.0"
   },
   "devDependencies": {
+    "@snowpack/plugin-dotenv": "^2.1.0",
     "@snowpack/plugin-sass": "^1.4.0",
     "@types/chai": "^4.2.18",
     "@types/mocha": "^8.2.2",
+    "@types/node": "^15.12.4",
     "@types/react": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
