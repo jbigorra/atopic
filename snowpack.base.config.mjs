@@ -11,6 +11,7 @@ export default {
     "@views": "./src/views",
     "@modules": "./src/modules",
     "@utils": "./src/utils",
-    "@src": "./src"
+    "@config": "./src/config",
+    "@src": "./src",
   }
 }
