@@ -7,6 +7,9 @@ dist/*
 node_modules/
 *.log
 
+# Build
+build
+
 # OS generated files
 .DS_Store
 .DS_Store?
