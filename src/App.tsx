@@ -1,13 +1,9 @@
 import * as React from "react";
 
-interface Props {
-  name: string;
-}
-
-function App({ name }) {
+function App() {
   return (
     <>
-      <h1>Hello {name}</h1>
+      <h1>Hello</h1>
     </>
   );
 }
