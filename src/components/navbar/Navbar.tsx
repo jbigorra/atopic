@@ -27,11 +27,7 @@ export function Navbar() {
       <div id="navbar-content" className={`navbar-menu ${activeClass}`}>
         <div className="navbar-start">
           <a className="navbar-item">
-            Home
-          </a>
-
-          <a className="navbar-item">
-            Documentation
+            Dashboard
           </a>
         </div>
 
