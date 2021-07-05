@@ -1,4 +1,4 @@
-import { SearchBar } from '@components/forms/SearchBar'
+import { SearchBar } from '@views/dashboard/components/SearchBar'
 import * as React from 'react'
 import { Card } from './components/Card'
 

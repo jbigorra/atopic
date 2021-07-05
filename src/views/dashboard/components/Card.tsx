@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 type CardProps = {
+  id: string;
   category: string;
   tags: string[];
   resources: string[];
