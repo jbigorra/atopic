@@ -1,3 +1,4 @@
+import { RobotFilled } from '@components/icons';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -14,7 +15,8 @@ export function Navbar() {
     <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="#">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+          <span className="icon is-medium"><RobotFilled /></span>
+          <p className="title">atopic.io</p>
         </a>
 
         <a role="button" onClick={showNavbarMenu} className={`navbar-burger ${activeClass}`} aria-label="menu" aria-expanded="false" data-target="navbar-content">
