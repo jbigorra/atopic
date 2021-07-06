@@ -8,5 +8,12 @@ export default {
     SUPABASE_PRIVATE_KEY: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzdXBhYmFzZSIsImlhdCI6MTYwMzk2ODgzNCwiZXhwIjoyNTUwNjUzNjM0LCJyb2xlIjoic2VydmljZV9yb2xlIn0.necIJaiP7X2T2QjGeV-FhpkizcNTX8HjDDBAxpgQTEI",
     DATABASE_CONN: "postgres://postgres:postgres@localhost:5432/postgres",
     EMAIL_HOST: "http://localhost:9000",
-  }
+  },
+  routes: [
+    {
+      match: "routes",
+      src: ".*",
+      dest: "/index.html"
+    }
+  ]
 }
