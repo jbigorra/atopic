@@ -1,13 +1,17 @@
 import * as React from 'react';
 
-type CardProps = {
+export interface IResource {
+  url: string;
+}
+
+export interface ICards {
   id: string;
   category: string;
   tags: string[];
-  resources: string[];
+  resources: IResource[];
 }
 
-export function Card(props: CardProps) {
+export function Card(props: ICards) {
   const {category, tags, resources} = props;
 
   const hashedTags = tags.map(t => `#${t.toUpperCase()}`).join(" ");
