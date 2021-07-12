@@ -1,6 +1,6 @@
-import { RobotFilled } from '@components/icons';
 import * as React from 'react';
 import { useState } from 'react';
+import { RobotFilled } from '~components/icons';
 
 export function Navbar() {
   const [isVisible, setIsVisible] = useState(false);

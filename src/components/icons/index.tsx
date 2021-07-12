@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 type MGIconProps = {
-  width?: number,
-  height?: number
+  width?: string,
+  height?: string
 }
 
-export function MagnifyingGlassIcon({ width = 32, height = 32 }: MGIconProps) {
+export function MagnifyingGlassIcon({ width = "32", height = "32" }: MGIconProps) {
   return (
     <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
       <path fill="#85D0CC" d="M13.0002 12.9999C13.3907 12.6094 14.0239 12.6094 14.4144 12.9999L20.7072 19.2928C21.0977 19.6833 21.0977 20.3165 20.7072 20.707C20.3166 21.0975 19.6835 21.0975 19.2929 20.707L13.0002 14.4141C12.6096 14.0236 12.6096 13.3904 13.0002 12.9999Z" clipRule="evenodd" fillRule="evenodd" strokeWidth="1.5"></path>
@@ -16,7 +16,7 @@ export function MagnifyingGlassIcon({ width = 32, height = 32 }: MGIconProps) {
 }
 
 
-export function PlusFilledIcon({ width = 32, height = 32 }: MGIconProps) {
+export function PlusFilledIcon({ width = "32", height = "32" }: MGIconProps) {
   return (
     <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
       <path fill="#85D0CC" d="M10.5 4.5C10.5 3.66772 11.1677 3 12 3C12.8323 3 13.5 3.66772 13.5 4.5V19.5C13.5 20.3323 12.8323 21 12 21C11.1677 21 10.5 20.3323 10.5 19.5V4.5Z" clipRule="evenodd" fillRule="evenodd" transform="translate(2,2)"></path><path fill="#98EED5" d="M10.5 4.5C10.5 3.66772 11.1677 3 12 3C12.8323 3 13.5 3.66772 13.5 4.5V19.5C13.5 20.3323 12.8323 21 12 21C11.1677 21 10.5 20.3323 10.5 19.5V4.5Z" clipRule="evenodd" fillRule="evenodd"></path>
@@ -25,7 +25,7 @@ export function PlusFilledIcon({ width = 32, height = 32 }: MGIconProps) {
   );
 }
 
-export function RobotFilled({ width = 48, height = 48 }: MGIconProps) {
+export function RobotFilled({ width = "32", height = "32" }: MGIconProps) {
   return (
     <>
       <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-reactroot="">

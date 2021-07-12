@@ -1,5 +1,5 @@
-import { MagnifyingGlassIcon } from '@components/icons'
 import * as React from 'react'
+import { MagnifyingGlassIcon } from '~components/icons'
 
 export function SearchBar() {
   return (

@@ -1,4 +1,6 @@
-export const config = {
+export type EnvConfig = Record<string, string>
+
+export const config: EnvConfig = {
   SUPABASE_PUBLIC_KEY: import.meta.env.SUPABASE_PUBLIC_KEY,
   SUPABASE_HOST: import.meta.env.SUPABASE_HOST,
   SUPABASE_PRIVATE_KEY: import.meta.env.SUPABASE_PRIVATE_KEY,
