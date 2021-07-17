@@ -1,6 +1,14 @@
 import * as React from "react";
-import { ChangeEvent, FocusEvent, MouseEvent, TouchEvent, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  FocusEvent,
+  MouseEvent,
+  TouchEvent,
+  useRef,
+  useState
+} from "react";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import "./CategorySelectInput.sass";
 
 enum DropdownState {
   Active = "is-active",
@@ -38,7 +46,8 @@ export default function CategorySelectInput({ initialOptions }: Props) {
     if (!isActiveClass) setIsActiveClass(DropdownState.Active);
   }
 
-  function handleSelection(e: ClickEvent<HTMLDivElement>) {
+  function handleSelection(e: ClickEvent<HTMLAnchorElement>) {
+    e.preventDefault();
     const value = e.currentTarget.getAttribute("data-category");
     setInputValue(value || "");
     setIsActiveClass(DropdownState.Inactive);
@@ -61,14 +70,14 @@ export default function CategorySelectInput({ initialOptions }: Props) {
   function showFilteredOptions() {
     if (filteredOptions.length > 0) {
       return filteredOptions.map((o, i) => (
-        <div
-          className="dropdown-item"
+        <a
+          className={"dropdown-item " + (o.category === inputValue ? "is-active" : "")}
           key={i}
           data-category={o.category}
           onClick={handleSelection}
         >
           {o.category}
-        </div>
+        </a>
       ));
     }
 
@@ -82,42 +91,40 @@ export default function CategorySelectInput({ initialOptions }: Props) {
 
   return (
     <>
-      <div ref={dropdownRef} className={"dropdown " + isActiveClass}>
-        <div className="dropdown-trigger">
-          <div className="field">
-            <label className="label" htmlFor="category">
-              Category
-            </label>
-            <div className="control">
-              <input
-                onFocus={handleInputFocus}
-                onChange={handleOnChange}
-                id="category"
-                name="category"
-                className="input"
-                type="text"
-                placeholder="e.g. Software Engineering"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu"
-                value={inputValue}
-              />
-            </div>
+      <div className="category-select-input field">
+        <label className="label" htmlFor="category">
+          Category
+        </label>
+        <div ref={dropdownRef} className={"dropdown control " + isActiveClass}>
+          <div className="dropdown-trigger">
+            <input
+              onFocus={handleInputFocus}
+              onChange={handleOnChange}
+              id="category"
+              name="category"
+              className="input"
+              type="text"
+              placeholder="e.g. Software Engineering"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu"
+              value={inputValue}
+            />
           </div>
-        </div>
-        <div className="dropdown-menu" id="dropdown-menu" role="menu">
-          <div className="dropdown-content">
-            {isFiltering
-              ? showFilteredOptions()
-              : initialOptions.map((o, i) => (
-                  <div
-                    className="dropdown-item"
-                    key={i}
-                    data-category={o.category}
-                    onClick={handleSelection}
-                  >
-                    {o.category}
-                  </div>
-                ))}
+          <div className="dropdown-menu" id="dropdown-menu" role="menu">
+            <div className="dropdown-content">
+              {isFiltering
+                ? showFilteredOptions()
+                : initialOptions.map((o, i) => (
+                    <a
+                      className={"dropdown-item " + (o.category === inputValue ? "is-active" : "")}
+                      key={i}
+                      data-category={o.category}
+                      onClick={handleSelection}
+                    >
+                      {o.category}
+                    </a>
+                  ))}
+            </div>
           </div>
         </div>
       </div>
