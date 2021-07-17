@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import CategorySelectInput from './components/CategorySelectInput';
+import CategorySelectInput from '../components/CategorySelectInput';
 
 const fakeOptions = [
   { id: Date.now().toString(), category: "Software Craftsmanship" },
