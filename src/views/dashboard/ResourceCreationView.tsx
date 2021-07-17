@@ -20,7 +20,7 @@ export default function ResourceCreationView() {
                 <input id="resource-url" name="resource-url" className="input" type="url" placeholder="e.g. https://www.youtube.com/watch?v=someVideoId..." />
               </div>
             </div>
-            <CategorySelectInput options={fakeOptions}/>
+            <CategorySelectInput initialOptions={fakeOptions}/>
             <div className="field">
               <label className="label" htmlFor="tags">Tags</label>
               <div className="control">
