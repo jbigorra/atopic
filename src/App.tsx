@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link, Redirect, Route, Switch } from "react-router-dom";
 import { Navbar } from "~components/navbar/Navbar";
-import { DashboardView } from "~views/dashboard";
+import { DashboardView } from "~views/dashboard/DashboardView";
 import './styles.sass';
 
 function App() {
