@@ -2,8 +2,7 @@ import * as React from "react";
 import {
   ChangeEvent,
   FocusEvent,
-  MouseEvent,
-  TouchEvent,
+  MouseEvent, RefObject, TouchEvent,
   useRef,
   useState
 } from "react";
@@ -23,20 +22,14 @@ type Props = {
 
 type ClickEvent<T> = MouseEvent<T> | TouchEvent<T>;
 
-function filter(options: Options, text: string): Options {
-  return options.filter((o) => o.category.match(text) !== null);
-}
-
-export default function CategorySelectInput({ initialOptions }: Props) {
+function useSelectInput(ref: RefObject<HTMLElement>, initialOptions: Options) {
   const [isActiveClass, setIsActiveClass] = useState<DropdownState>(
     DropdownState.Inactive
   );
   const [inputValue, setInputValue] = useState<string>("");
-  const [isFiltering, setIsFiltering] = useState<boolean>(false);
-  const [filteredOptions, setFilteredOptions] = useState<Options>([]);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [options, setOptions] = useState<Options>(initialOptions);
 
-  useOnClickOutside(dropdownRef, hideCategoryDropdown);
+  useOnClickOutside(ref, hideCategoryDropdown);
 
   function hideCategoryDropdown() {
     setIsActiveClass(DropdownState.Inactive);
@@ -46,34 +39,57 @@ export default function CategorySelectInput({ initialOptions }: Props) {
     if (!isActiveClass) setIsActiveClass(DropdownState.Active);
   }
 
-  function handleSelection(e: ClickEvent<HTMLAnchorElement>) {
+  function handleSelection(e: ClickEvent<HTMLAnchorElement>): void {
     e.preventDefault();
-    const value = e.currentTarget.getAttribute("data-category");
+    const value = e.currentTarget.getAttribute("data-selected");
     setInputValue(value || "");
     setIsActiveClass(DropdownState.Inactive);
-    setFilteredOptions([]);
-    setIsFiltering(false);
+    setOptions(initialOptions);
   }
 
-  function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
+  function handleOnChange(e: ChangeEvent<HTMLInputElement>): void {
     const value = e.currentTarget.value;
     if (value.length > 0) {
       const options = filter(initialOptions, value);
-      setFilteredOptions(options);
-      setIsFiltering(true);
+      setOptions(options);
     } else {
-      setIsFiltering(false);
+      setOptions(initialOptions);
     }
     setInputValue(value);
   }
 
-  function showFilteredOptions() {
-    if (filteredOptions.length > 0) {
-      return filteredOptions.map((o, i) => (
+  function filter(options: Options, text: string): Options {
+    return options.filter((o) => o.category.match(text) !== null);
+  }
+
+  return {
+    inputValue,
+    isActiveClass,
+    handleInputFocus,
+    handleSelection,
+    handleOnChange,
+    options
+  };
+}
+
+export default function CategorySelectInput({ initialOptions }: Props) {
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const {
+    inputValue,
+    isActiveClass,
+    handleInputFocus,
+    handleSelection,
+    handleOnChange,
+    options
+  } = useSelectInput(dropdownRef, initialOptions);
+
+  function showOptions() {
+    if (options.length > 0) {
+      return options.map((o, i) => (
         <a
           className={"dropdown-item " + (o.category === inputValue ? "is-active" : "")}
           key={i}
-          data-category={o.category}
+          data-selected={o.category}
           onClick={handleSelection}
         >
           {o.category}
@@ -112,18 +128,7 @@ export default function CategorySelectInput({ initialOptions }: Props) {
           </div>
           <div className="dropdown-menu" id="dropdown-menu" role="menu">
             <div className="dropdown-content">
-              {isFiltering
-                ? showFilteredOptions()
-                : initialOptions.map((o, i) => (
-                    <a
-                      className={"dropdown-item " + (o.category === inputValue ? "is-active" : "")}
-                      key={i}
-                      data-category={o.category}
-                      onClick={handleSelection}
-                    >
-                      {o.category}
-                    </a>
-                  ))}
+              {showOptions()}
             </div>
           </div>
         </div>

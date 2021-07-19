@@ -37,7 +37,7 @@ export function DashboardView() {
       cardsQuery.data?.map((c) => (
         <Card key={c.id} {...c} />
       ))
-    )
+    );
   }
 
   return (
