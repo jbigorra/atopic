@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-import { InMemoryCardsApi } from "~modules/api-clients/cards-api/cards-api.client";
+import { InMemoryCardsApi } from "~modules/api-clients/cards-api.client";
 import ResourceCreationView from "./child-views/ResourceCreationView";
 import { AddResourceButton, Card, SearchBar } from "./components";
 import { ICards } from "./components/Card";
