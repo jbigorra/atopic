@@ -9,13 +9,13 @@ const fakeOptions = [
   { id: Date.now().toString(), category: "Clean code" },
 ];
 
-function handleSubmit(e: FormEvent<HTMLFormElement>) {
-  e.preventDefault();
-  const form = new FormData(e.currentTarget);
-  console.log(form);
-}
-
 export default function ResourceCreationView() {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    console.log(form);
+  }
+
   return (
     <div className="container is-fluid">
       <div className="columns">
