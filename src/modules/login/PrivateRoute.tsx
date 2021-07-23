@@ -1,8 +1,10 @@
 import * as React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, RouteProps } from "react-router-dom";
 import { useAuth } from "./Auth";
 
-export default function PrivateRoute(props: { children: React.ReactNode }) {
+interface IPrivateProps extends RouteProps {}
+
+const PrivateRoute : React.FC<IPrivateProps> = (props: IPrivateProps) => {
   const auth = useAuth();
   const { children, ...rest } = props;
 
@@ -24,3 +26,5 @@ export default function PrivateRoute(props: { children: React.ReactNode }) {
     />
   );
 }
+
+export default PrivateRoute;
